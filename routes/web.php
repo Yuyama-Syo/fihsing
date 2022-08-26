@@ -18,4 +18,3 @@ Route::get('/posts/{post}','PostController@post');
 Route::get('/posts/mypage','PostController@mypage');
 //自分がいいねした投稿を表示
 //Route::get('/posts/mypage/');
-
