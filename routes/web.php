@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', 'PostController@home');
-
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'PostController@index')->middleware('auth');
+Route::get('/posts/create','PostController@create');
+Route::get('/posts/{post}','PostController@post');
+Route::get('/posts/mypage','PostController@mypage');
+//自分がいいねした投稿を表示
+//Route::get('/posts/mypage/');
+
