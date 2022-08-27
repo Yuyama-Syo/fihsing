@@ -16,3 +16,4 @@ Route::get('/', 'PostController@index')->middleware('auth');
 Route::get('/posts/create','PostController@create');
 Route::get('/posts/{post}','PostController@post');
 Route::get('/posts/mypage','PostController@mypage');
+//いいねした投稿を表示
