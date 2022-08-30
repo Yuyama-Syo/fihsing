@@ -24,9 +24,9 @@
             <form action="" method="GET">
                 <input type="text" name="fish" value="">
                 <p>都道府県</p>
-                <select id="prefectures" name="prefectures"></select>
+                <select id="prefectures" name="prefecture_id"></select>
                 <p>市町村</p>
-                    <select id="city" name="city" onFocus="change()"></select>
+                    <select id="city" name="city_id" onFocus="change()"></select>
                 <p></p>
             </form>
             
@@ -40,7 +40,7 @@
                             <li>{{$post->good_number}}</li>
                         </ul>
                         <p>{{$post->target}}</p>
-                        <p>{{$post->fishing_spot}}</p>
+                        <p>{{$post->prefecture_id}}　{{$post->city_id}}</p>
                         <p>{{$post->catch_number}}</p>
                         <img src="">
                     </div>

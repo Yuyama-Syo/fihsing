@@ -24,7 +24,9 @@
            <img src="">
            <p>ターゲット：{{$post->target}}</p>
            <p>釣果数：{{$post->catch_number}}</p>
-           <p>場所：{{$post->fishing_spot}}</p>
+           <p>場所</p>
+           <p>都道府県：{{$post->prefecture_id}}</p>
+           <p>市町村：{{$post->city_id}}</p>
            <p>天候：{{$post->weather}}</p>
            <p>日時：{{$post->catch_time}}</p>
            <p>タックル</p>
