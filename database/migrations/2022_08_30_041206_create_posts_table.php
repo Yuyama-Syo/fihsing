@@ -19,7 +19,8 @@ class CreatePostsTable extends Migration
             $table->string('target',20);
             $table->integer('catch_number');
             $table->integer('max_size');
-            $table->//fishing_spotのデータ型を後で記入(nullable)；
+            $table->//prefecture_idのカラム
+            $table->//city_idのカラム
             $table->string('weather',20);
             $table->dateTime('catch_time');
             $table->string('fishing_type',20);

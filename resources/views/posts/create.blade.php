@@ -37,7 +37,7 @@
                 ・ライン: <input type="text" name="line">
                 ・アイテム: <input type="text" name="item">
                 コメント: <textarea name="comment"></textarea>
-                画像: <input type="file" name="image">
+                画像: <input type="file" name="image_path">
                 <input type="submit" value="投稿">
             </form>
         </div>
