@@ -40,7 +40,7 @@
                             <li>{{$post->good_number}}</li>
                         </ul>
                         <p>{{$post->target}}</p>
-                        <p>{{$post->fishing_spot}}</p>
+                        <p>{{$post->prefecture_id}}　{{$post->city_id}}</p>
                         <p>{{$post->catch_number}}</p>
                         <img src="">//投稿画像のリンク
                     </div>
