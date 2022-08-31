@@ -1808,62 +1808,6 @@
             }
         }
           ];
-        
-        window.onload = function(){ 
-          for(var i=1;i<48;i++){　　
-            let op = document.createElement("option");
-        
-            var StringNum;
-            if(i<10){
-                StringNum="0"+String(i);
-            }
-            else
-            {
-                StringNum=String(i);
-            }
-        
-            op.value = arr[0][StringNum].name;  
-            op.text = arr[0][StringNum].name;   
-        
-            document.getElementById("prefectures").appendChild(op);
-          }
-        }
-        
-        function change()
-        {   
-            if(document.getElementById("city").value!=null){
-                var element = document.getElementById("city");
-                while (element.firstChild) 
-                {
-                    element.removeChild(element.firstChild);
-                }
-            }
-        
-            let op1 = document.createElement("option");
-            for(var i=1;i<48;i++)
-            {    
-                var StringNum;
-                if(i<10){
-                    StringNum="0"+String(i);            
-                }
-                else
-                {
-                    StringNum=String(i);
-                }
-                if(document.getElementById("prefectures").value==arr[0][StringNum].name)
-                {
-                    var para=StringNum;
-                }
-            }
-        
-            for(var ii=1;ii<arr[0][para].city.length;ii++)
-            {   
-                let op1 = document.createElement("option");     
-                op1.value = arr[0][para].city[ii].city;  
-                op1.text = arr[0][para].city[ii].city;   
-                document.getElementById("city").appendChild(op1);
-            }    
-        }
         </script>
     </body>
 </html>
