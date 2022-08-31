@@ -10,13 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Auth::routes();
-Route::get('/', 'PostController@boot')->middleware('auth');;
+Route::get('/', 'PostController@index');
 Route::get('/posts/create','PostController@create');
 Route::get('/posts/{post}','PostController@post');
 Route::get('/posts/mypage','PostController@mypage');
 //いいねした投稿を表示
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

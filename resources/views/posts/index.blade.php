@@ -9,7 +9,7 @@
         <!-- Fonts -->
     </head>
     <body>
-        {{Auth::user()->name}}
+        
         <header>
             <h1>Fishing information</h1>
             <p>新しくアカウントを作る</p>
