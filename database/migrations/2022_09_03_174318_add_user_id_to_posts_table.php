@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnToUsrsTable extends Migration
+class AddUserIdToPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddColumnToUsrsTable extends Migration
      */
     public function up()
     {
-        Schema::table('usrs', function (Blueprint $table) {
-            $table->string('self_introduction',200)->nullable();
-            $table->text('image_path')->nullable();
+        Schema::table('posts', function (Blueprint $table) {
+            $table->bigInteger('user_id')->unsigned()->after('post_id');
+            $table->foreign('user_id')->references('user_id')->on('users');
         });
     }
 
@@ -26,7 +26,7 @@ class AddColumnToUsrsTable extends Migration
      */
     public function down()
     {
-        Schema::table('usrs', function (Blueprint $table) {
+        Schema::table('posts', function (Blueprint $table) {
             //
         });
     }

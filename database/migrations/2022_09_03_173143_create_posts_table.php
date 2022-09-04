@@ -15,12 +15,11 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('post_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->string('target',20);
             $table->integer('catch_number');
             $table->integer('max_size');
-            $table->//prefecture_idのカラム
-            $table->//city_idのカラム
+            $table->string('prefecture_id');
+            $table->string('city_id');
             $table->string('weather',20);
             $table->dateTime('catch_time');
             $table->string('fishing_type',20);
