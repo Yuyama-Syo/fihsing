@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Post $post)
     {
-        return view('posts/index'); 
+        return view('posts/index')->with(['posts' => $post->get()]);
     }
 }
