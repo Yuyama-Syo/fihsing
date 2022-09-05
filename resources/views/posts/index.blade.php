@@ -14,9 +14,9 @@
             <h1>Fishing information</h1>
             <p>新しくアカウントを作る</p>
             <ul>
-                <a>ホーム</a>
-                <a>投稿する</a>
-                <a>my page</a>
+                <a href="/">ホーム</a>
+                <a href="/posts/create">投稿する</a>
+                <a href="/posts/mypage">my page</a>
             </ul>
         </header>
         <div class="contents">
@@ -34,15 +34,17 @@
             <div class="posts">
                 @foreach($posts as $post)
                     <div class="post">
-                        <ul>
-                            <li>{{$post->created_at}}</li>
-                            <li>{{$post->user_name}}</li>
-                            <li>{{$post->good_number}}</li>
-                        </ul>
-                        <p>{{$post->target}}</p>
-                        <p>{{$post->prefecture_id}}　{{$post->city_id}}</p>
-                        <p>{{$post->catch_number}}</p>
-                        <img src="">
+                        <a href="/posts/{{$post->id}}">
+                            <ul>
+                                <li>{{$post->created_at}}</li>
+                                <li>{{$post->user_name}}</li>
+                                <li>{{$post->good_number}}</li>
+                            </ul>
+                            <p>{{$post->target}}</p>
+                            <p>{{$post->prefecture_id}}　{{$post->city_id}}</p>
+                            <p>{{$post->catch_number}}</p>
+                            <img src="">
+                        </a>
                     </div>
                 @endforeach
             </div>

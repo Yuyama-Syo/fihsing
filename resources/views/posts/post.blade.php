@@ -13,9 +13,9 @@
             <h1>Fishing information</h1>
             <p>新しくアカウントを作る</p>
             <ul>
-                <a>ホーム</a>
-                <a>投稿する</a>
-                <a>my page</a>
+                <a href="/">ホーム</a>
+                <a href="/posts/create">投稿する</a>
+                <a href="/posts/mypage">my page</a>
             </ul>
         </header>
         <div class="contents">
@@ -36,7 +36,9 @@
            <p>コメント：{{$post->comment}}</p>
            
            //この下にチャット欄
-           
+        </div>
+        <div class="footer">
+            <a href="/">戻る</a>
         </div>
         <script>
             var arr = [
