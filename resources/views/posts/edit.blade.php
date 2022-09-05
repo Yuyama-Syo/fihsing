@@ -19,31 +19,31 @@
         </header>
         <div class="contents">
             <form action='/posts' method="POST">
-                ターゲット: <input type="text" name="post[target]" placeholder="(カタカナで入力)" value="{{old('post.target')}}"><br>
+                ターゲット: <input type="text" name="post[target]" placeholder="(カタカナで入力)" value="{{$post->target}}"><br>
                 <p class="target_error" style="color:red">{{$errors->first('post.target')}}</p>
-                釣果数: <input type="number" name="post[catch_number]" value="{{old('post.catch_number')}}"><br>
+                釣果数: <input type="number" name="post[catch_number]" value="{{$post->catch_number>}}"><br>
                 <p class="catch_number_error" style="color:red">{{$errors->first('post.catch_number')}}</p>
-                サイズ: <input type="text" name="post[max_size]" value="{{old('post.max_size')}}"><br>
+                サイズ: <input type="text" name="post[max_size]" value="{{$post->max_size}}"><br>
                 <p class="max_size_error" style="color:red">{{$errors->first('post.max_size')}}</p>
                 //都道府県の出力
                 場所: <p>都道府県</p>
-                      <select id="prefectures" name="post[prefecture_id]" value="{{old('post.prefecture_id')}}"></select>
+                      <select id="prefectures" name="post[prefecture_id]" value="{{$post->prefecture_id}}"></select>
                       <p class="prefecture_id_error" style="color:red">{{$errors->first('post.prefecture_id')}}</p>
                       <p>市町村</p>
-                      <select id="city" name="post[city_id]" onFocus="change()" value="{{old('post.city_id')}}"></select>
+                      <select id="city" name="post[city_id]" onFocus="change()" value="{{$post->city_id}}"></select>
                       <p class="city_id_error" style="color:red">{{$errors->first('post.city_id')}}</p>
                       <p></p>
-                天候: <input type="text" name="post[weather]" value="{{old('post.weather')}}"><br>
+                天候: <input type="text" name="post[weather]" value="{{$post->weather}}"><br>
                 <p class="weather_error" style="color:red">{{$errors->first('post.weather')}}</p>
-                日時: <input type="date" name="post[catch_time]" value="{{old('post.catch_time')}}">
-                釣り方: <input type="text" name="post[fishing_type]" value="{{old('post.fishing_type')}}">
+                日時: <input type="date" name="post[catch_time]" value="{{$post->catch_time}}">
+                釣り方: <input type="text" name="post[fishing_type]" value="{{$post->fishing_type}}">
                 <p class="fishing_type_error" style="color:red">{{$errors->first('post.fishing_type')}}</p>
                 タックル
-                ・ロッド: <input type="text" name="post[rod]" value="{{old('post.rod')}}">
-                ・リール: <input type="text" name="post[reel]" value="{{old('post.reel')}}">
-                ・ライン: <input type="text" name="post[line]" value="{{old('post.line')}}">
-                ・アイテム: <input type="text" name="post[item]" value="{{old('post.item')}}">
-                コメント: <textarea name="post[comment]" value="{{old('post.comment')}}"></textarea>
+                ・ロッド: <input type="text" name="post[rod]" value="{{$post->rod)}}">
+                ・リール: <input type="text" name="post[reel]" value="{{$post->reel}}">
+                ・ライン: <input type="text" name="post[line]" value="{{$post->line}}">
+                ・アイテム: <input type="text" name="post[item]" value="{{$post->item}}">
+                コメント: <textarea name="post[comment]" value="{{$post->comment}}"></textarea>
                 画像: <input type="file" name="post[image_path]">//イメージパスはどのようにする
                 <input type="submit" value="投稿">
             </form>
