@@ -20,7 +20,7 @@
             </ul>
         </header>
         <div class="contents">
-            //検索機能
+            <!--検索機能-->
             <form action="" method="GET">
                 <input type="text" name="fish" value="">
                 <p>都道府県</p>
@@ -30,15 +30,15 @@
                 <p></p>
             </form>
             
-            //投稿表示
+            <!--投稿表示-->
             <div class="posts">
                 @foreach($posts as $post)
                     <div class="post">
                         <a href="/posts/{{$post->id}}">
                             <ul>
                                 <li>{{$post->created_at}}</li>
-                                <li>{{$post->user_name}}</li>
                                 <li>{{$post->good_number}}</li>
+                                <li>{{$post->user->name}}</li>
                             </ul>
                             <p>{{$post->target}}</p>
                             <p>{{$post->prefecture_id}}　{{$post->city_id}}</p>
@@ -47,6 +47,9 @@
                         </a>
                     </div>
                 @endforeach
+            </div>
+            <div class="paginate">
+                {{$posts->links()}}
             </div>
         </div>
         
