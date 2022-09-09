@@ -19,7 +19,7 @@
             </ul>
         </header>
         <div class="contents">
-           <p>{{$post->user_id}}</p>
+           <p>{{$post->user->name}}</p>
            <img src="{{$post->image_path}}">
            <p>ターゲット：{{$post->target}}</p>
            <p>釣果数：{{$post->catch_number}}</p>
@@ -36,6 +36,15 @@
            <p>コメント：{{$post->comment}}</p>
            
            //この下にチャット欄
+          
+        </div>
+        <div class="delete">
+            @if (Auth::user()->id == $post->user_id)
+            <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post" style="display:inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit">削除</button>
+            </form>
         </div>
         <div class="footer">
             <a href="/">戻る</a>

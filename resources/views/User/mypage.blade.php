@@ -19,7 +19,7 @@
         </header>
         <div class="contents">
             <div class="profile">
-                <img src=''>//user画像のリンク
+                <img src={{$user->image_path}}>//user画像のリンク
                 <p>{{$user->name}}</p>
                 
                 //それぞれのactionを記述
@@ -32,7 +32,7 @@
             <h2>My posts</h2>
             <div class="posts">
                 //自分の投稿のみ表示するように変更が必要
-                @foreach($posts as $post)
+                @foreach($own_posts as $post)
                     <div class="post">
                         <ul>
                             <li>{{$post->created_at}}</li>
@@ -45,6 +45,9 @@
                         <img src="">//投稿画像のリンク
                     </div>
                 @endforeach
+            </div>
+            <div class="paginate">
+                {{$post->links()}}
             </div>
         </div>
         <script src="prefectures.js"></script>
