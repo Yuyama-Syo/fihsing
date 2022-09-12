@@ -12,14 +12,14 @@
         <header>
             <h1>Fishing information</h1>
             <ul>
-                <a>ホーム</a>
-                <a>投稿する</a>
-                <a>my page</a>
+                <a href="/">ホーム</a>
+                <a href="/posts/create">投稿する</a>
+                <a href="/user">my page</a>
             </ul>
         </header>
         <div class="contents">
             <div class="profile">
-                <img src={{$user->image_path}}>//user画像のリンク
+                <img src="{{asset($user->image_path}}">//user画像のリンク
                 <p>{{$user->name}}</p>
                 
                 //それぞれのactionを記述
@@ -42,7 +42,7 @@
                         <p>{{$post->target}}</p>
                         <p>{{$post->prefecture_id}}　{{$post->city_id}}</p>
                         <p>{{$post->catch_number}}</p>
-                        <img src="">//投稿画像のリンク
+                        <img src="{{asset($post->image_path)}}">//投稿画像のリンク
                     </div>
                 @endforeach
             </div>

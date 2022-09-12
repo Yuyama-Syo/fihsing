@@ -12,13 +12,13 @@
         <header>
             <h1>Fishing information</h1>
             <ul>
-                <a>ホーム</a>
-                <a>投稿する</a>
-                <a>my page</a>
+                <a href="/">ホーム</a>
+                <a href="/posts/create">投稿する</a>
+                <a href="/user">my page</a>
             </ul>
         </header>
         <div class="contents">
-            <form action='/posts' method="POST">
+            <form action='/posts' method="POST" enctype="multipart/form-data">
                 ターゲット: <input type="text" name="post[target]" placeholder="(カタカナで入力)" value="{{old('post.target')}}"><br>
                 <p class="target_error" style="color:red">{{$errors->first('post.target')}}</p>
                 釣果数: <input type="number" name="post[catch_number]" value="{{old('post.catch_number')}}"><br>
@@ -44,7 +44,7 @@
                 ・ライン: <input type="text" name="post[line]" value="{{old('post.line')}}">
                 ・アイテム: <input type="text" name="post[item]" value="{{old('post.item')}}">
                 コメント: <textarea name="post[comment]" value="{{old('post.comment')}}"></textarea>
-                画像: <input type="file" name="post[image_path]">//イメージパスはどのようにする
+                画像: <input type="file" id="file" name="post[image_path]">
                 <input type="submit" value="投稿">
             </form>
         </div>
@@ -1006,7 +1006,7 @@
                     {"citycode":"0230022","city":"春日井市"},
                     {"citycode":"0230023","city":"豊川市"},
                     {"citycode":"0230024","city":"津島市"},
-                    {"citycode":"0230025","city":"碧南市"},
+                    {"citycode":"0230025","city":"碧���市"},
                     {"citycode":"0230026","city":"刈谷市"},
                     {"citycode":"0230027","city":"豊田市"},
                     {"citycode":"0230028","city":"安城市"},

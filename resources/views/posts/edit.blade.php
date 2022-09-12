@@ -12,9 +12,9 @@
         <header>
             <h1>Fishing information</h1>
             <ul>
-                <a>ホーム</a>
-                <a>投稿する</a>
-                <a>my page</a>
+                <a href="/">ホーム</a>
+                <a href="/posts/create">投稿する</a>
+                <a href="/user">my page</a>
             </ul>
         </header>
         <div class="contents">

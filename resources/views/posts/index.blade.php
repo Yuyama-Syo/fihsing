@@ -16,7 +16,7 @@
             <ul>
                 <a href="/">ホーム</a>
                 <a href="/posts/create">投稿する</a>
-                <a href="/posts/mypage">my page</a>
+                <a href="/user">my page</a>
             </ul>
         </header>
         <div class="contents">
@@ -43,7 +43,7 @@
                             <p>{{$post->target}}</p>
                             <p>{{$post->prefecture_id}}　{{$post->city_id}}</p>
                             <p>{{$post->catch_number}}</p>
-                            <img src="">
+                            <img src="{{assert($post->image_path)}}">
                         </a>
                     </div>
                 @endforeach

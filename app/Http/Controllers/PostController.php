@@ -16,6 +16,13 @@ class PostController extends Controller
     {
         $input = $request('post');
         $input+=['user_id'=>$request->user()->id];
+        
+        $dir='post_images';
+        $file_name=$input->file('image_path')->getClientOriginalName();
+        $input->file('image_path')->storeAs('public/'.$dir,$file_name);
+        
+        $input['image_path']=$file_name;
+        
         $post->fill($input)->save();
         return redirect('/post/'.$post->id);
     }
