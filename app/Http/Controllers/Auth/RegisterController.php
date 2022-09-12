@@ -8,6 +8,9 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\File;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Image\Facades\Image;
 
 class RegisterController extends Controller
 {
@@ -47,12 +50,30 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    
+    private function saveAvatar(UploadedFile $file)
+    {
+        $tempPath=$this->makeTempPath();
+        Image::make($file)->fit(200,200)->save($tempPath);
+        $filePath=Storage::disk('public')->putFile('user_images',new File($tempPath));
+        return basename($filePath);
+    }
+    
+    private function makeTempPath()
+    {
+        $tmp_fp=tmpfile();
+        $meta=stream_get_meta_data($tmp_fp);
+        return $meta["uri"];
+    }
+     
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'self_introduction' => ['required','string','max:200'],
+            'image_path' => ['required'],
         ]);
     }
 
@@ -64,10 +85,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $fileName=$this->saveAvatar($data['image_path']);
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'self_introduction'=>$data['self_introduction'],
+            'image_path'=>$fileName,
         ]);
     }
+    
 }
