@@ -21,13 +21,15 @@
         </header>
         <div class="contents">
             <!--検索機能-->
-            <form action="" method="GET">
-                <input type="text" name="fish" value="">
-                <p>都道府県</p>
-                <select id="prefectures" name="prefecture_id"></select>
-                <p>市町村</p>
-                    <select id="city" name="city_id" onFocus="change()"></select>
+            <form action="{{url('/serch')}}" method="post">
+                {{csrf_field()}}
+                {{method_field('get')}}
+                
+                ターゲット：<input type="text" name="fish"><br>
+                都道府県：<select id="prefectures" name="prefecture_id"></select><br>
+                市町村：<select id="city" name="city_id" onFocus="change()"></select>
                 <p></p>
+                <button type="submit">検索</button>
             </form>
             
             <!--投稿表示-->

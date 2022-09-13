@@ -51,4 +51,19 @@ class PostController extends Controller
         $post->delete();
         return redirect('User.mypage');
     }
+    
+    public function serch(PostRequest $request){
+        $keyword_target=$request->target;
+        $keyword_prefecture_id=$request->prefecture_id;
+        $keyword_city_id=$request->city_id;
+        
+        if(!empty($keyword_target) && !empty($keyword_prefecture_id) && !empty($keyword_city_id)){
+            $query=Post::query();
+            $posts=$query->where('target','like','%'.$keyword_target.'%')->where('prefecture_id','like','%'.$keyword_prefecture_id)->where('city_id','like'.'%'.$keyword_city_id.'%')->get();
+            return view('/serch')->with([
+                'posts'=>$posts,
+            ]);
+        }
+        
+    }
 }
