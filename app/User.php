@@ -33,6 +33,7 @@ class User extends Authenticatable
      * The attributes that should be cast to native types.
      *
      * @var array
+     *
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
@@ -42,6 +43,10 @@ class User extends Authenticatable
     
     public function posts(){
         return $this->hasMany('App\Post');
+    }
+    
+    public function comments(){
+        return $this->hasMany('App\Comment');
     }
     
     public function getOwnPaginateByLimit(int $limit_count=10)
