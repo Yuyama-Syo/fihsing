@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnToUsersTable extends Migration
+class AddColumnToProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->text('image_path');
-            $table->string('self_introduction',200);
+        Schema::table('profiles', function (Blueprint $table) {
+            $table->bigInteger('user_id')->unsigned()->after('profile_id');
+            $table->foreign('user_id')->references('user_id')->on('users');
         });
     }
 
@@ -26,7 +26,7 @@ class AddColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('profiles', function (Blueprint $table) {
             //
         });
     }
