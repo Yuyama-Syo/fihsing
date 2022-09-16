@@ -49,6 +49,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Comment');
     }
     
+    public function profiles(){
+        return $this->hasOne('App\Profile');
+    }
+    
     public function getOwnPaginateByLimit(int $limit_count=10)
     {
         return $this::with('posts')->find(Auth::id())->posts()->orderBy('updated_at','DESC')->paginate($limit_count);

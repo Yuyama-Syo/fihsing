@@ -9,6 +9,6 @@ class UserController extends Controller
 {
     public function mypage(User $user)
     {
-        return view('User.mypage')->with(['own_posts'=>$user->getOwnPaginateByLimit()]);
+        $users=User::with('profiles')->take(5)->get();
     }
 }
