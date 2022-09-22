@@ -35,6 +35,8 @@
            <p>アイテム：{{$post->item}}</p>
            <p>コメント：{{$post->comment}}</p>
            
+           
+           
            //この下にチャット欄
           
         </div>
@@ -49,6 +51,8 @@
         <div class="footer">
             <a href="/">戻る</a>
         </div>
+        
+        
         <script>
             var arr = [
             {

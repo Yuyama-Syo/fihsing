@@ -25,7 +25,6 @@
                 <p class="catch_number_error" style="color:red">{{$errors->first('post.catch_number')}}</p>
                 サイズ: <input type="text" name="post[max_size]" value="{{old('post.max_size')}}"><br>
                 <p class="max_size_error" style="color:red">{{$errors->first('post.max_size')}}</p>
-                //都道府県の出力
                 場所: <p>都道府県</p>
                       <select id="prefectures" name="post[prefecture_id]" value="{{old('post.prefecture_id')}}"></select>
                       <p class="prefecture_id_error" style="color:red">{{$errors->first('post.prefecture_id')}}</p>
@@ -33,21 +32,28 @@
                       <select id="city" name="post[city_id]" onFocus="change()" value="{{old('post.city_id')}}"></select>
                       <p class="city_id_error" style="color:red">{{$errors->first('post.city_id')}}</p>
                       <p></p>
+                      <input type="button" onclick="initMap()" value="googlemapを表示する"><br><br>
                 天候: <input type="text" name="post[weather]" value="{{old('post.weather')}}"><br>
                 <p class="weather_error" style="color:red">{{$errors->first('post.weather')}}</p>
-                日時: <input type="date" name="post[catch_time]" value="{{old('post.catch_time')}}">
+                日時: <input type="date" name="post[catch_time]" value="{{old('post.catch_time')}}"><br>
                 釣り方: <input type="text" name="post[fishing_type]" value="{{old('post.fishing_type')}}">
                 <p class="fishing_type_error" style="color:red">{{$errors->first('post.fishing_type')}}</p>
                 タックル
-                ・ロッド: <input type="text" name="post[rod]" value="{{old('post.rod')}}">
-                ・リール: <input type="text" name="post[reel]" value="{{old('post.reel')}}">
-                ・ライン: <input type="text" name="post[line]" value="{{old('post.line')}}">
-                ・アイテム: <input type="text" name="post[item]" value="{{old('post.item')}}">
-                コメント: <textarea name="post[comment]" value="{{old('post.comment')}}"></textarea>
+                ・ロッド: <input type="text" name="post[rod]" value="{{old('post.rod')}}"><br>
+                ・リール: <input type="text" name="post[reel]" value="{{old('post.reel')}}"><br>
+                ・ライン: <input type="text" name="post[line]" value="{{old('post.line')}}"><br>
+                ・アイテム: <input type="text" name="post[item]" value="{{old('post.item')}}"><br>
+                コメント: <textarea name="post[comment]" value="{{old('post.comment')}}"></textarea><br>
                 画像: <input type="file" id="file" name="post[image_path]">
+                <div id="map" style="height:500px; width:500px"></div>
                 <input type="submit" value="投稿">
             </form>
         </div>
+        <div>
+            <input type="button" onclick="initMap()">
+        </div>
+        
+        
         <script >
         var arr = [
             {
@@ -1874,8 +1880,9 @@
                 document.getElementById("city").appendChild(op1);
             }    
         }
-        
         </script>
+        <script src="{{ asset('/js/map.js') }}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAW_YZS20lxwovD3yvhil9ymMuU6sLVTU4" async></script>
     </body>
 </html>
 @endsection
