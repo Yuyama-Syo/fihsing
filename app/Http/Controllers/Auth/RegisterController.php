@@ -74,7 +74,6 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'self_introduction' => ['required','string','max:200'],
-            'image_path' => ['required'],
         ]);
     }
 
@@ -86,7 +85,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $fileName=$this->saveAvatar($data['image_path']);
+        $image_path=$data['image_path'];
+        $image_path->store('public');
+        $path=$image_path;
         
         return User::create([
             'name' => $data['name'],
@@ -96,7 +97,7 @@ class RegisterController extends Controller
         
         return Profile::create([
             'self_introduction'=>$data['self_introduction'],
-            'image_path'=>$fillName,
+            'image_path'=>$path,
         ]);
     }
     
