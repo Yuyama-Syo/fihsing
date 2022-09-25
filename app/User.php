@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','self_introduction','image_path',
+        'name', 'email', 'password','self_introduction',
     ];
 
     /**
@@ -47,10 +47,6 @@ class User extends Authenticatable
     
     public function comments(){
         return $this->hasMany('App\Comment');
-    }
-    
-    public function profiles(){
-        return $this->hasOne('App\Profile');
     }
     
     public function getOwnPaginateByLimit(int $limit_count=10)

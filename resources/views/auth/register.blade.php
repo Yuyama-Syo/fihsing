@@ -73,21 +73,7 @@
                                 @enderror
                             </div>
                         </div>
-                        
-                        <div class="form-group row">
-                            <label for="image_path" class="col-md-4 col-form-label text-md-right">プロフィール画像</label>
-                            
-                            <div class="col-md-6">
-                                <input id="image_path" type="file" class="form-control @error('file') is-invalid @enderror" name="image_path" value="{{ old('image_path') }}" required autocomplete="image_path" autofocus>
-
-                                @error('image_path')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
+                    
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

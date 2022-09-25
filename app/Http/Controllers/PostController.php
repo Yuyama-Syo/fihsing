@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 
 class PostController extends Controller
@@ -12,24 +13,61 @@ class PostController extends Controller
         return view('posts/index')->with(['posts'=>$post->getPaginateByLimit()]); 
     }
     
-    public function store(PostRequest $request, Post $post)
+    public function store(Request $request, Post $post)
     {
-        $input = $request('post');
-        $input+=['user_id'=>$request->user()->id];
         
-        $dir='post_images';
-        $file_name=$input->file('image_path')->getClientOriginalName();
-        $input->file('image_path')->storeAs('public/'.$dir,$file_name);
+        /*
+        if($file=$request->image_path){
+            $fileName=time().$file->getClientOriginalName();
+            $target_path=public_path('storage/');
+            $file->move($taregt_path,$fileName);
+        }else{
+            $fileName="";
+        }
         
-        $input['image_path']=$file_name;
+        */
         
+        /*
+        $post->user_id=Auth::user()->id;
+        $post->target=$request->target;
+        $post->catch_number=$request->catch_number;
+        $post->size=$request->size;
+        $post->prefecture_id=$request->prefecture_id;
+        $post->city_id=$request->city_id;
+        $post->weather=$request->weather;
+        $post->catch_number=$request->catch_number;
+        $post->fishing_type=$request->fishing_type;
+        $post->rod=$request->rod;
+        $post->reel=$request->reel;
+        $post->line=$request->line;
+        $post->item=$request->item;
+        $post->comment=$request->comment;
+        $post->image_path=$fileName;
+        $post-
+        
+        Auth::user()->id
+        
+        $post->save(); */
+        
+        $input=$request['post'];
+        $fileName=time().$input['image_path']->getClientOriginalName();
+        $target_path=public_path('storage/');
+        $input['image_path']->move($target_path,$fileName);
+        $input['image_path']=$fileName;
+        $post['user_id']=auth()->id();
         $post->fill($input)->save();
-        return redirect('/post/'.$post->id);
+        
+        return redirect('/');
     }
     
     public function create()
     {
         return view('posts/create');
+    }
+    
+    public function post(Post $post)
+    {
+        return view('posts/post')->with(['posts'=>$post]);
     }
     
     public function edit()

@@ -19,6 +19,7 @@
         </header>
         <div class="contents">
             <form action='/posts' method="POST" enctype="multipart/form-data">
+                @csrf
                 ターゲット: <input type="text" name="post[target]" placeholder="(カタカナで入力)" value="{{old('post.target')}}"><br>
                 <p class="target_error" style="color:red">{{$errors->first('post.target')}}</p>
                 釣果数: <input type="number" name="post[catch_number]" value="{{old('post.catch_number')}}"><br>
@@ -48,9 +49,6 @@
                 <div id="map" style="height:500px; width:500px"></div>
                 <input type="submit" value="投稿">
             </form>
-        </div>
-        <div>
-            <input type="button" onclick="initMap()">
         </div>
         
         

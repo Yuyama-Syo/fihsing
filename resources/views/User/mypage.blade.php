@@ -19,7 +19,6 @@
         </header>
         <div class="contents">
             <div class="profile">
-                <img src="{{asset($user->image_path}}">//user画像のリンク
                 <p>{{$user->name}}</p>
                 
                 //それぞれのactionを記述
