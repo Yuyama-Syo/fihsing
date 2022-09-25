@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
-use App\Profile;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -51,21 +50,6 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    
-    private function saveAvatar(UploadedFile $file)
-    {
-        $tempPath=$this->makeTempPath();
-        Image::make($file)->fit(200,200)->save($tempPath);
-        $filePath=Storage::disk('public')->putFile('user_images',new File($tempPath));
-        return basename($filePath);
-    }
-    
-    private function makeTempPath()
-    {
-        $tmp_fp=tmpfile();
-        $meta=stream_get_meta_data($tmp_fp);
-        return $meta["uri"];
-    }
      
     protected function validator(array $data)
     {
@@ -85,19 +69,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $image_path=$data['image_path'];
-        $image_path->store('public');
-        $path=$image_path;
-        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
-        
-        return Profile::create([
             'self_introduction'=>$data['self_introduction'],
-            'image_path'=>$path,
         ]);
     }
     

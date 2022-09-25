@@ -19,7 +19,7 @@
             </ul>
         </header>
         <div class="contents">
-           <p>{{$post->user->name}}</p>
+           /*<p>{{$post->user->name}}</p>*/
            <img src="{{assert($post->image_path)}}">
            <p>ターゲット：{{$post->target}}</p>
            <p>釣果数：{{$post->catch_number}}</p>

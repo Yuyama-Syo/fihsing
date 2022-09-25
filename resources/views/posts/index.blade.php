@@ -36,17 +36,17 @@
             <div class="posts">
                 @foreach($posts as $post)
                     <div class="post">
-                        <a href="/posts/{{$post->id}}">
-                            <ul>
+                            /*<ul>
                                 <li>{{$post->created_at}}</li>
                                 <li>{{$post->good_number}}</li>
-                                <li>{{$post->user->name}}</li>
-                            </ul>
+                                <li>{{$post->user_name}}</li>
+                            </ul>*/
+                            <p>釣行日：{{$post->catch_number}}</p>
                             <p>{{$post->target}}</p>
                             <p>{{$post->prefecture_id}}　{{$post->city_id}}</p>
-                            <p>{{$post->catch_number}}</p>
+                            <p>釣果：{{$post->catch_number}}匹</p>
                             <img src="{{assert($post->image_path)}}">
-                        </a>
+                            <a href="posts/{{$post->post_id}}">詳しく見る</a>
                     </div>
                 @endforeach
             </div>

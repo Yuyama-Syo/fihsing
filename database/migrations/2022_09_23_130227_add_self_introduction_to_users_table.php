@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProfilesTable extends Migration
+class AddSelfIntroductionToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,7 @@ class CreateProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
-            $table->bigIncrements('profile_id');
-            $table->timestamps();
-            $table->text('image_path');
+        Schema::table('users', function (Blueprint $table) {
             $table->string('self_introduction',200);
         });
     }
@@ -28,6 +25,8 @@ class CreateProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

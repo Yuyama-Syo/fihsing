@@ -10,6 +10,7 @@ class Post extends Model
         'user_id',
         'target',
         'catch_number',
+        'max_size',
         'size',
         'prefecture_id',
         'city_id',
