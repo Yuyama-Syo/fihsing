@@ -1879,7 +1879,7 @@
             }    
         }
         </script>
-        <script src="{{ asset('/js/map.js') }}"></script>
+        <script src="{{ asset('/js/selected_map.js') }}"></script>
         <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAW_YZS20lxwovD3yvhil9ymMuU6sLVTU4" async></script>
     </body>
 </html>

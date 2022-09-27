@@ -20,7 +20,7 @@
             </ul>
         </header>
         <div class="contents">
-            <!--検索機能-->
+            <!--検索機能
             <form action="{{url('/serch')}}" method="post">
                 {{csrf_field()}}
                 {{method_field('get')}}
@@ -31,22 +31,26 @@
                 <p></p>
                 <button type="submit">検索</button>
             </form>
+            -->
             
             <!--投稿表示-->
             <div class="posts">
                 @foreach($posts as $post)
                     <div class="post">
-                            /*<ul>
-                                <li>{{$post->created_at}}</li>
-                                <li>{{$post->good_number}}</li>
-                                <li>{{$post->user_name}}</li>
-                            </ul>*/
-                            <p>釣行日：{{$post->catch_number}}</p>
-                            <p>{{$post->target}}</p>
-                            <p>{{$post->prefecture_id}}　{{$post->city_id}}</p>
-                            <p>釣果：{{$post->catch_number}}匹</p>
-                            <img src="{{assert($post->image_path)}}">
-                            <a href="posts/{{$post->post_id}}">詳しく見る</a>
+                        {{--
+                        <ul>
+                            <li>{{$post->created_at}}</li>
+                            <li>{{$post->good_number}}</li>
+                            <li>{{$post->user_name}}</li>
+                        </ul>
+                        --}}
+                        <h4>{{$post->target}}</h4>
+                        <p>{{$post->prefecture_id}}　{{$post->city_id}}</p>
+                        <p>釣果：{{$post->catch_number}}匹</p>
+                        <p>釣行日：{{$post->catch_time}}</p>
+                        <p>釣果：{{$post->catch_number}}匹</p>
+                        <img src="{{ asset('storage/'.$post->image_path) }}" width="180px" height="120px"><br>
+                        <a href="posts/{{$post->id}}">詳しく見る</a>
                     </div>
                 @endforeach
             </div>

@@ -18,35 +18,28 @@
             </ul>
         </header>
         <div class="contents">
+            <!--
             <div class="profile">
-                <p>{{$user->name}}</p>
-                
-                //それぞれのactionを記述
                 <a action="">フォロー</a>
                 <a action="">フォロワー</a>
                 <a action="">私の投稿</a>
                 <a action="">いいねした投稿</a>
             </div>
-            //投稿表示
+            -->
+            
             <h2>My posts</h2>
             <div class="posts">
-                //自分の投稿のみ表示するように変更が必要
                 @foreach($own_posts as $post)
                     <div class="post">
-                        <ul>
-                            <li>{{$post->created_at}}</li>
-                            <li>{{$post->user_name}}</li>
-                            <li>{{$post->good_number}}</li>
-                        </ul>
-                        <p>{{$post->target}}</p>
+                        <h4>{{$post->target}}</h4>
                         <p>{{$post->prefecture_id}}　{{$post->city_id}}</p>
-                        <p>{{$post->catch_number}}</p>
-                        <img src="{{asset($post->image_path)}}">//投稿画像のリンク
+                        <p>釣果：{{$post->catch_number}}匹</p>
+                        <p>釣行日：{{$post->catch_time}}</p>
+                        <p>釣果：{{$post->catch_number}}匹</p>
+                        <img src="{{ asset('storage/'.$post->image_path) }}" width="180px" height="120px"><br>
+                        <a href="posts/{{$post->id}}">詳しく見る</a>
                     </div>
                 @endforeach
-            </div>
-            <div class="paginate">
-                {{$post->links()}}
             </div>
         </div>
         <script src="prefectures.js"></script>
