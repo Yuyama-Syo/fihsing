@@ -27,7 +27,7 @@
             </div>
             -->
             
-            <h2>My posts</h2>
+            <h2>自分の投稿</h2>
             <div class="posts">
                 @foreach($own_posts as $post)
                     <div class="post">

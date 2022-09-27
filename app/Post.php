@@ -1,11 +1,13 @@
 <?php
 
 namespace App;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    use SoftDeletes;
+    
     protected $fillable=[
         'user_id',
         'target',
@@ -37,6 +39,11 @@ class Post extends Model
     
     public function comments(){
         return $this->hasMany('App\Comment');
+    }
+    
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
     }
     
 }

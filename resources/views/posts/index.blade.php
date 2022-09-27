@@ -12,7 +12,6 @@
         
         <header>
             <h1>Fishing information</h1>
-            <p>新しくアカウントを作る</p>
             <ul>
                 <a href="/">ホーム</a>
                 <a href="/posts/create">投稿する</a>
@@ -20,6 +19,7 @@
             </ul>
         </header>
         <div class="contents">
+            <h2>釣り情報</h2>
             <!--検索機能
             <form action="{{url('/serch')}}" method="post">
                 {{csrf_field()}}
