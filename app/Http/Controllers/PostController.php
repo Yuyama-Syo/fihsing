@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
+use App\Like;
 
 class PostController extends Controller
 {
@@ -74,6 +75,8 @@ class PostController extends Controller
     
     public function post(Post $post)
     {
+        $post = Post::withCount('likes')->get()->first();
+        //dd($post);
         return view('posts/post')->with(['post' => $post]);
     }
     
@@ -94,7 +97,7 @@ class PostController extends Controller
     public function delete(Post $post)
     {
         $post->delete();
-        return redirect('User.mypage');
+        return redirect('/');
     }
     
     public function serch(PostRequest $request){

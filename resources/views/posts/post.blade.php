@@ -34,7 +34,8 @@
            <p>アイテム：{{$post->item}}</p>
            <p>コメント：{{$post->comment}}</p>
            <div id="map" style="height:500px; width:500px"></div>
-           
+           <button onclick="like({{$post->id}})">いいね</button><p>いいね数：{{$post->likes_count}}</p>
+           <button onclick="unlike({{$post->id}})">いいね解除</button>
           
         </div>
         <div class="delete">
@@ -49,6 +50,7 @@
         <div class="footer">
             <a href="/">戻る</a>
         </div>
+        <script src="{{ asset('/js/good.js') }}"></script>
         <script src="{{ asset('/js/post_map.js') }}"></script>
         <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyAW_YZS20lxwovD3yvhil9ymMuU6sLVTU4&callback=initMap" async></script>
     </body>
