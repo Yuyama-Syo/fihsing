@@ -12,7 +12,7 @@ class PostController extends Controller
     /**
     * 特定IDのpostを表示する
     *
-    * @params Object Post // 引数の$postはid=1のPostインスタンス
+    * @params Object Post 
     * @return Reposnse post view
     */
     
@@ -75,8 +75,7 @@ class PostController extends Controller
     
     public function post(Post $post)
     {
-        $post = Post::withCount('likes')->get()->first();
-        //dd($post);
+        $post = Post::withCount('likes')->where('id',$post->id)->get()->first();
         return view('posts/post')->with(['post' => $post]);
     }
     

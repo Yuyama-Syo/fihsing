@@ -6,40 +6,45 @@
     <head>
         <meta charset="utf-8">
         <title>Fishing information</title>
+        <link rel="stylesheet" href="{{ asset('css/index.css') }}">
         <!-- Fonts -->
     </head>
     <body>
-        <header>
-            <h1>Fishing information</h1>
-            <ul>
-                <a href="/">ホーム</a>
-                <a href="/posts/create">投稿する</a>
-                <a href="/user">my page</a>
-            </ul>
-        </header>
-        <div class="contents">
-            <!--
-            <div class="profile">
-                <a action="">フォロー</a>
-                <a action="">フォロワー</a>
-                <a action="">私の投稿</a>
-                <a action="">いいねした投稿</a>
-            </div>
-            -->
-            
-            <h2>自分の投稿</h2>
-            <div class="posts">
-                @foreach($own_posts as $post)
-                    <div class="post">
-                        <h4>{{$post->target}}</h4>
-                        <p>{{$post->prefecture_id}}　{{$post->city_id}}</p>
-                        <p>釣果：{{$post->catch_number}}匹</p>
-                        <p>釣行日：{{$post->catch_time}}</p>
-                        <p>釣果：{{$post->catch_number}}匹</p>
-                        <img src="{{ asset('storage/'.$post->image_path) }}" width="180px" height="120px"><br>
-                        <a href="posts/{{$post->id}}">詳しく見る</a>
-                    </div>
-                @endforeach
+        <div class="container">
+            <header>
+                <h1>Fishing information</h1>
+                <ul>
+                    <a href="/">ホーム</a>
+                    <a href="/posts/create">投稿する</a>
+                    <a href="/user">my page</a>
+                </ul>
+            </header>
+            <div class="contents">
+                <!--
+                <div class="profile">
+                    <a action="">フォロー</a>
+                    <a action="">フォロワー</a>
+                    <a action="">私の投稿</a>
+                    <a action="">いいねした投稿</a>
+                </div>
+                -->
+                
+                <h2>自分の投稿</h2>
+                <div class="posts">
+                    @foreach($own_posts as $post)
+                        <div class="post">
+                            <h4>{{$post->target}}</h4>
+                            <ul>
+                                    <li>{{$post->prefecture_id}}　{{$post->city_id}}</li>
+                                    <li>釣果：{{$post->catch_number}}匹</li>
+                                    <li>釣行日：{{$post->catch_time}}</li>
+                                    <li>釣果：{{$post->catch_number}}匹</li>
+                                </ul>
+                            <img src="{{ asset('storage/'.$post->image_path) }}" width="300px" height="180px"><br>
+                            <a href="posts/{{$post->id}}">詳しく見る</a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
         <script src="prefectures.js"></script>
