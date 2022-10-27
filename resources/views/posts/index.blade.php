@@ -53,6 +53,7 @@
                                 <li>釣果：{{$post->catch_number}}匹</li>
                             </ul>
                             <img src="{{ asset('storage/'.$post->image_path) }}" width="300px" height="180px"><br>
+                            <p>いいね数：{{$post->likes_count}}</p>
                             <a href="posts/{{$post->id}}">詳しく見る</a>
                         </div>
                     @endforeach
