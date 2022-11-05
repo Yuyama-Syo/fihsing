@@ -14,7 +14,6 @@ class AddSelfIntroductionToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('email',191)->unique()->after('name');
             $table->string('self_introduction',200);
         });
     }
