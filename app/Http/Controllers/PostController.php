@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Like;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -18,7 +19,12 @@ class PostController extends Controller
     
     public function index(Post $post)
     {
+        /*$post=Post::all();
+        dd($post);*/
+        
+        $post = Post::withCount('likes')->get()->first();
         return view('posts/index')->with(['posts'=>$post->getPaginateByLimit()]); 
+        
     }
     
     public function store(Request $request, Post $post)
@@ -58,10 +64,11 @@ class PostController extends Controller
         $post->save(); */
         
         $input=$request['post'];
+        $input_image=$input['image_path'];
+        $interv=\Image::make($input_image)->encode('jpg');
         $fileName=time().$input['image_path']->getClientOriginalName();
         $target_path=public_path('storage/');
         $input['image_path']->move($target_path,$fileName);
-        $input['image_path']=$fileName;
         $post['user_id']=auth()->id();
         $post->fill($input)->save();
         
