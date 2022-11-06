@@ -23,8 +23,10 @@ class PostController extends Controller
         dd($post);*/
         
         $post = Post::withCount('likes')->get()->first();
+        return view('posts/index')->with(['posts'=>$post]);
+        /*
         return view('posts/index')->with(['posts'=>$post->getPaginateByLimit()]); 
-        
+        */
     }
     
     public function store(Request $request, Post $post)
