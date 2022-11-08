@@ -65,7 +65,7 @@ class PostController extends Controller
         
         $input=$request['post'];
         $input_image=$input['image_path'];
-        $interv=\Image::make($input_image)->encode('jpg');
+        /*$interv=\Image::make($input_image)->encode('jpg');*/
         $fileName=time().$input['image_path']->getClientOriginalName();
         $target_path=public_path('storage/');
         $input['image_path']->move($target_path,$fileName);
