@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Like;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
@@ -65,10 +66,14 @@ class PostController extends Controller
         
         $input=$request['post'];
         $input_image=$input['image_path'];
-        /*$interv=\Image::make($input_image)->encode('jpg');*/
+        /*$interv=\Image::make($input_image)->encode('jpg');
         $fileName=time().$input['image_path']->getClientOriginalName();
         $target_path=public_path('storage/');
         $input['image_path']->move($target_path,$fileName);
+        $fileName=Storage::disk('s3')->putFile('/',$input_image);
+        $fileName=$input_image->storeAs('public',$input_image,['disk' => 's3', 'visibility' => 'public']);*/
+        $fileName=Storage::disk('s3')->putFile('/',$input_image);
+        $input['image_path']=Storage::disk('s3')->url($fileName);
         $post['user_id']=auth()->id();
         $post->fill($input)->save();
         
