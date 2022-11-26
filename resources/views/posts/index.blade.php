@@ -52,7 +52,9 @@
                                 <li>釣行日：{{$post->catch_time}}</li>
                                 <li>釣果：{{$post->catch_number}}匹</li>
                             </ul>
-                            <img src="{{ asset('storage/'.$post->image_path) }}" width="300px" height="180px"><br>
+                            <!--<img src="{{ asset('storage/'.$post->image_path) }}" width="300px" height="180px"><br>
+                            <img src="{{ Storage::disk('s3')->url("{$post->image_path}") }}">-->
+                            <img src={{$post->image_path}}>
                             <p>いいね数：{{$post->likes_count}}</p>
                             <a href="posts/{{$post->id}}">詳しく見る</a>
                         </div>
