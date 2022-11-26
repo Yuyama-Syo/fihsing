@@ -42,7 +42,7 @@
                         <p>{{$post->target}}</p>
                         <p>{{$post->prefecture_id}}　{{$post->city_id}}</p>
                         <p>{{$post->catch_number}}</p>
-                        <img src="{{assert($post->image_path)}}">
+                        <img src={{$post->image_path}}>
                     </div>
                 @endforeach
             </div>

@@ -19,7 +19,7 @@
             </ul>
         </header>
         <div class="contents">
-           <img src="{{ asset('storage/'.$post->image_path) }}" width="450px" height="300px">
+           <img src={{$post->image_path}}>
            <p>ターゲット：{{$post->target}}</p>
            <p>釣果数：{{$post->catch_number}}</p>
            <p>場所</p>
