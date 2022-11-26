@@ -40,7 +40,7 @@
                                     <li>釣行日：{{$post->catch_time}}</li>
                                     <li>釣果：{{$post->catch_number}}匹</li>
                                 </ul>
-                            <img src="{{ asset('storage/'.$post->image_path) }}" width="300px" height="180px"><br>
+                            <img src={{$post->image_path}}><br>
                             <a href="posts/{{$post->id}}">詳しく見る</a>
                         </div>
                     @endforeach
